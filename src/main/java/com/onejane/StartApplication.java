@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
@@ -17,6 +18,7 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @EnableWebSocket
+@EnableScheduling
 public class StartApplication {
     public static void main(final String... args) {
         SpringApplication.run(StartApplication.class, args);
