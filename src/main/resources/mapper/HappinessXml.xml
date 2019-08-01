@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onejane.mybatis.dao.HappinessXmlDao">
+    <select id="findHappinessByCity" parameterType="String" resultType="com.onejane.mybatis.entity.Happiness">
+        SELECT * FROM happiness WHERE city = #{city}
+    </select>
+
+    <insert id="insertHappiness" parameterType="HashMap" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO happiness(city, num) VALUES(#{city}, #{num})
+    </insert>
+</mapper>
