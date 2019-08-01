@@ -1,0 +1,25 @@
+spring: 
+  application: 
+    name: springboot
+
+
+com:
+  mqtt:
+    inbound:
+      url: tcp://144.34.177.162:1883
+      clientId: ServerIn
+      topics: topic_in
+      username: admin
+      password: public
+    outbound:
+      urls: tcp://144.34.177.162:1883
+      clientId: ServerOut
+      topic: topic_out
+      username: admin
+      password: public
+
+server:
+  port: 10000
+
+
+  
