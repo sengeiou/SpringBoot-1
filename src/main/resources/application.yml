@@ -8,6 +8,19 @@ spring:
     password: hmtgrjhxmroubecd
   thymeleaf:
     cache: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springboot?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password:
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
 
 com:
   mqtt:
