@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onejane.poi.dao.CustomerDao">
+    <resultMap id="BaseResultMap" type="com.onejane.poi.vo.Customer">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="address" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="enrol_date" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="des" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
+
+    <insert id="addUser" parameterType="com.onejane.poi.vo.Customer">
+    insert into customer
+    (name,phone,address,enrol_date,des)
+    values
+    (
+    #{name},
+    #{phone},
+    #{address},
+    #{enrolDate},
+    #{des}
+    )
+  </insert>
+    <update id="updateUserByName" parameterType="com.onejane.poi.vo.Customer">
+    update customer
+    set
+    phone=#{phone},
+    address=#{address},
+    enrol_date=#{enrolDate},
+    des=#{des}
+    where name = #{name}
+  </update>
+
+    <select id="selectByName" resultType="java.lang.Integer">
+    SELECT
+    count(*)
+    FROM customer
+    WHERE name=#{name}
+  </select>
+</mapper>
