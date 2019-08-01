@@ -22,6 +22,11 @@ spring:
     hibernate:
       ddl-auto: update
 
+
+  main:
+    allow-bean-definition-overriding: true
+
+
 com:
   mqtt:
     inbound:
@@ -40,7 +45,10 @@ com:
 server:
   port: 10000
 
-
+jwt:
+  config:
+    key: codewj
+    ttl: 3600000
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
