@@ -1,7 +1,13 @@
 spring: 
   application: 
     name: springboot
-
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: kungzai@qq.com
+    password: hmtgrjhxmroubecd
+  thymeleaf:
+    cache: false
 
 com:
   mqtt:
