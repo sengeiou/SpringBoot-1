@@ -1,7 +1,11 @@
 package com.onejane;
 
 import com.onejane.jpa.dao.UserDao;
+import com.onejane.jpa.entity.RoleEntity;
 import com.onejane.jpa.entity.UserEntity;
+import com.onejane.mapstruct.UserMapperRole;
+import com.onejane.mapstruct.UserRoleVo;
+import lombok.extern.slf4j.Slf4j;
 import net.minidev.json.JSONArray;
 import org.junit.After;
 import org.junit.Before;
@@ -17,11 +21,13 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Slf4j
 public class UserDaoTest {
 
 
@@ -131,5 +137,36 @@ public class UserDaoTest {
         user.setName("王建");
         user.setPwd("123");
         mongoTemplate.insert(user, "imooc");
+    }
+
+    @Test
+    public void testMapStruct(){
+        UserEntity user1 = new UserEntity();
+        user1.setId(1L);
+        user1.setAccount("codewj");
+        user1.setName("wj");
+        user1.setPwd("123");
+        UserEntity user2 = new UserEntity();
+        user2.setId(2L);
+        user2.setAccount("ashercode");
+        user2.setName("wz");
+        user2.setPwd("456");
+        List<UserEntity> userEntities = new ArrayList<>();
+        userEntities.add(user1);
+        userEntities.add(user2);
+        List<UserRoleVo> personVos = UserMapperRole.MAPPER.toVos(userEntities);
+        log.info(personVos.toString());
+
+
+        RoleEntity roleEntity = new RoleEntity();
+        roleEntity.setId(3L);
+        roleEntity.setName("管理员");
+        roleEntity.setNote("666");
+        UserRoleVo userRoleVo = UserMapperRole.MAPPER.toVo2(user1, roleEntity);
+        log.info(userRoleVo.toString());
+
+        UserRoleVo userRoleVo1 = UserMapperRole.MAPPER.toVo(user1);
+        log.info(userRoleVo1.toString());
+
     }
 }
