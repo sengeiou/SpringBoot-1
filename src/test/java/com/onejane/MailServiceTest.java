@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * @date 2018/5/3 22:17
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MailServiceTest {
 
     @Resource

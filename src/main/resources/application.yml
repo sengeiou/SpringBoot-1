@@ -22,7 +22,28 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
-
+#  data:
+#    mongodb:
+#      always-use-m-beans: false
+#      authentication-database: 'auth_dev '
+#      connect-timeout: 10000
+#      heartbeat-connect-timeout: 20000
+#      heartbeat-frequency: 10000
+#      heartbeat-socket-timeout: 20000
+#      local-threshold: 15
+#      max-connection-idel-time: 0
+#      max-connection-life-time: 0
+#      max-connections-per-host: 100
+#      max-wait-time: 120000
+#      min-connections-per-host: 10
+#      min-heartbeat-frequency: 500
+#      server-selection-timeout: 30000
+#      socket-keep-alive: false
+#      socket-timeout: 0
+#      ssl-enabled: false
+#      ssl-invalid-host-name-allowed: false
+#      threads-allowed-to-block-for-connection-multiplier: 5
+#      uri: mongodb://127.0.0.1:27017/mydb
 
   main:
     allow-bean-definition-overriding: true
@@ -45,6 +66,14 @@ spring:
       key-prefix: dev
       cache-null-values: false
       time-to-live: 20s
+
+mongodb:
+  primary:
+    database: primary
+    uri: mongodb://127.0.0.1:27017
+  secondary:
+    database: secondary
+    uri: mongodb://127.0.0.1:27017
 
 
 com:
@@ -72,3 +101,4 @@ jwt:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+

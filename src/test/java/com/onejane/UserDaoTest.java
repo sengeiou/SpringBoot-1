@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -117,5 +118,18 @@ public class UserDaoTest {
     public void testRedisSet() {
         this.redisTemplate.opsForValue().set("study", "java");
         System.out.println(this.redisTemplate.opsForValue().get("study"));
+    }
+
+
+    @Resource
+    private MongoTemplate mongoTemplate;
+    @Test
+    public void mongoSaveUser() {
+        UserEntity user = new UserEntity();
+        user.setId(2L);
+        user.setAccount("codewj");
+        user.setName("王建");
+        user.setPwd("123");
+        mongoTemplate.insert(user, "imooc");
     }
 }
