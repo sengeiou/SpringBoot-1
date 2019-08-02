@@ -1,10 +1,15 @@
 package com.onejane.jpa.dao;
 
 import com.onejane.jpa.entity.UserEntity;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -15,9 +20,23 @@ import java.util.List;
  * 使用@Mapper替代@respository
  */
 
-@Repository
+@Mapper
+@CacheConfig(cacheNames = "user")
 public interface UserDao extends JpaRepository<UserEntity, Long> {
+
+    @Cacheable(key ="#p0")
     UserEntity findByAccount(String account);
+
+    // 如果指定为 true，则方法调用后将立即清空所有缓存
+    @CacheEvict(key ="#p0",allEntries=true)
+    void deleteByAccount(String account);
+
+    @CachePut(key = "#p0")
+    @Modifying(clearAutomatically = true)
+    @Query(value = "update auth_user p set p.Name =?1 where p.account = ?2",nativeQuery = true)
+    int updateByAccount( String name,  String account);
+
+
     UserEntity findByAccountAndPwd(String account, String pwd);
     List<UserEntity> findAllByIdGreaterThan(Long id);
 

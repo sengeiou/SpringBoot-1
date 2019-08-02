@@ -12,13 +12,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserDaoTest {
 
 
@@ -97,5 +99,23 @@ public class UserDaoTest {
         userDao.deleteById(1L);
         userDao.deleteById(3L);
         userDao.deleteById(5L);
+    }
+
+    @Test
+    public void testdeleteByAccount(){
+        userDao.deleteByAccount("renwox");
+    }
+
+    @Test
+    public void updateByAccount(){
+        userDao.updateByAccount("wangjian","renwox");
+    }
+
+    @Resource
+    private RedisTemplate<String, String> redisTemplate;
+    @Test
+    public void testRedisSet() {
+        this.redisTemplate.opsForValue().set("study", "java");
+        System.out.println(this.redisTemplate.opsForValue().get("study"));
     }
 }

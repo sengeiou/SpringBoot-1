@@ -27,6 +27,26 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
+  redis:
+    host: 127.0.0.1
+    database: 1
+    port: 6379
+    password: ''
+    timeout: 1s
+    jedis:
+      pool:
+        max-active: 20
+        max-idle: 20
+        min-idle: 10
+        max-wait: -1ms
+  cache:
+    redis:
+      use-key-prefix: true
+      key-prefix: dev
+      cache-null-values: false
+      time-to-live: 20s
+
+
 com:
   mqtt:
     inbound:
