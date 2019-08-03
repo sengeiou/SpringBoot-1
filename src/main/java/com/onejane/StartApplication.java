@@ -15,7 +15,7 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 /**
  * @Auther: codewj
  * @Date: 2019/8/1 11:08
- * @Description:
+ * @Description: mysql,redis,mongod --dbpath F:\MongoDB\Server\3.4\data\db
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @EnableWebSocket

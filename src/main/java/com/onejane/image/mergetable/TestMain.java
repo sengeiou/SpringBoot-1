@@ -1,5 +1,6 @@
 package com.onejane.image.mergetable;
 
+import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -48,6 +49,9 @@ public class TestMain {
 			config.setImgHeight(384);
 			//设置标题行数
 			config.setTitleRowCnt(9);
+
+			config.setTitleFontStyle(Font.PLAIN);
+			config.setTitleFontSize(25);
 
 			//生成报表图片
 			ReportImageCreator.createReportImage(config , list ,file );
