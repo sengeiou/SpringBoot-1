@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onejane.multisource.mapper.basemapper.TApplyMapper">
+  <resultMap id="BaseResultMap" type="com.onejane.multisource.entity.TApply">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="applyer_police_num" jdbcType="VARCHAR" property="applyerPoliceNum" />
+    <result column="applyer_name" jdbcType="VARCHAR" property="applyerName" />
+    <result column="asked_name" jdbcType="VARCHAR" property="askedName" />
+    <result column="applyer_id" jdbcType="INTEGER" property="applyerId" />
+    <result column="unit_id" jdbcType="INTEGER" property="unitId" />
+    <result column="case_info_ids" jdbcType="VARCHAR" property="caseInfoIds" />
+    <result column="case_count" jdbcType="INTEGER" property="caseCount" />
+    <result column="apply_time" jdbcType="TIMESTAMP" property="applyTime" />
+    <result column="apply_state" jdbcType="VARCHAR" property="applyState" />
+    <result column="apply_goal" jdbcType="VARCHAR" property="applyGoal" />
+    <result column="approve_time" jdbcType="TIMESTAMP" property="approveTime" />
+    <result column="approve_state" jdbcType="VARCHAR" property="approveState" />
+    <result column="approver_id" jdbcType="INTEGER" property="approverId" />
+    <result column="approve_prop" jdbcType="VARCHAR" property="approveProp" />
+  </resultMap>
+
+</mapper>

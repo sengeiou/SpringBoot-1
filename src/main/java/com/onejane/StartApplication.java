@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
+import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * @Auther: codewj
@@ -18,6 +19,7 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
  * @Description: mysql,redis,mongod --dbpath F:\MongoDB\Server\3.4\data\db
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@MapperScan(basePackages = "com.onejane.multisource.mapper.*mapper")
 @EnableWebSocket
 @EnableScheduling
 @EnableCaching
