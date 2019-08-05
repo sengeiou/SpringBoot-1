@@ -1,4 +1,7 @@
-spring: 
+spring:
+  # 指定启动的配置
+  profiles:
+    active: dev
   application: 
     name: springboot
   mail:
@@ -133,4 +136,30 @@ jwt:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+
+# 配置的补充与优先级 在dev中没有配置age,所以会采用主配置的，在prod中配置dev,会按照精确优先，使用dev中的配置
+#home 目录下的 devtools 全局设置属性（~/.spring-boot-devtools.properties，如果 devtools 激活）。
+#测试用例上的@TestPropertySource 注解。
+#测试用例上的@SpringBootTest#properties 注解。
+#命令行参数
+#来自 SPRING_APPLICATION_JSON 的属性（环境变量或系统属性中内嵌的内联 JSON）。
+#ServletConfig 初始化参数。
+#ServletContext 初始化参数。
+#来自于 java:comp/env 的 JNDI 属性。
+#Java 系统属性（System.getProperties()）。
+#操作系统环境变量。
+#RandomValuePropertySource，只包含 random.*中的属性。
+#没有打进 jar 包的 Profile-specific 应用属性（application-{profile}.properties 和 YAML 变量）
+#打进 jar 包中的 Profile-specific 应用属性（application-{profile}.properties 和 YAML 变量）。
+#没有打进 jar 包的应用配置（application.properties 和 YAML 变量）。
+#打进 jar 包中的应用配置（application.properties 和 YAML 变量）。
+#@Configuration 类上的@PropertySource 注解。
+#默认属性（使用 SpringApplication.setDefaultProperties 指定）。
+#这里做一下说明，上文第 12,14 点没有打进 jar 包的文件指的是在启动时候通过 spring.config.location 参数指定的外部配置文件，外部配置文件的优先级应该是大于 jar 中的配置文件。
+
+#对上面的配置中常用的规则可以精简如下：
+
+#命令行 > application-{profile}.yml > application.yml > 默认属性
+programmer:
+  age: 999
 
