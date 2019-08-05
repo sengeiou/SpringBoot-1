@@ -24,6 +24,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableScheduling
 @EnableCaching
 public class StartApplication {
+    // 扫描与主程序所在包及其子包，对于本工程而言 默认扫描 com.onejane
     public static void main(final String... args) {
         SpringApplication.run(StartApplication.class, args);
     }
