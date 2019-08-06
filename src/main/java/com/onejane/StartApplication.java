@@ -1,7 +1,10 @@
 package com.onejane;
 
+import com.onejane.emqtt.server.MqttServer;
 import com.onejane.jwt.utils.JwtUtil;
 import com.onejane.websocket.ChatRoomServerEndpoint;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -18,12 +21,15 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @Date: 2019/8/1 11:08
  * @Description: mysql,redis,mongod --dbpath F:\MongoDB\Server\3.4\data\db
  */
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication(scanBasePackages = {"com.onejane"},exclude = {SecurityAutoConfiguration.class})
 @MapperScan(basePackages = "com.onejane.multisource.mapper.*mapper")
 @EnableWebSocket
 @EnableScheduling
 @EnableCaching
-public class StartApplication {
+public class StartApplication implements CommandLineRunner {
+    @Autowired
+    private MqttServer mqttServer;
+
     // 扫描与主程序所在包及其子包，对于本工程而言 默认扫描 com.onejane
     public static void main(final String... args) {
         SpringApplication.run(StartApplication.class, args);
@@ -53,5 +59,10 @@ public class StartApplication {
     @Bean
     public ChatRoomServerEndpoint chatRoomServerEndpoint(){
         return new ChatRoomServerEndpoint();
+    }
+
+    @Override
+    public void run(String... strings) throws Exception {
+        mqttServer.connect();
     }
 }

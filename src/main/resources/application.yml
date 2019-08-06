@@ -113,18 +113,15 @@ mongodb:
 
 com:
   mqtt:
-    inbound:
-      url: tcp://144.34.177.162:1883
-      clientId: ServerIn
-      topics: topic_in
-      username: admin
-      password: public
-    outbound:
-      urls: tcp://144.34.177.162:1883
-      clientId: ServerOut
-      topic: topic_out
-      username: admin
-      password: public
+    host: tcp://192.168.2.6:1883
+    clientid: onejane
+    username: admin
+    password: public
+    subscribeTopic: aaa
+    publishTopic: aaa
+    timeout: 10
+    keepalive: 90
+    maxInflight: 1000000
 
 server:
   port: 10000
