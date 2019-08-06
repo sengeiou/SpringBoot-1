@@ -31,8 +31,8 @@ public class TestMain {
 		}
 
 		//生成图片
-		File file = new File("F:/test1.jpg");
-		File file2 = new File("F:/test2.jpg");
+		File file = new File("F:/1.jpg");
+		File file2 = new File("F:/1.jpg");
 		try {
 
 			//默认报表图片合并单元格对象

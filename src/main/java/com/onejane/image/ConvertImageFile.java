@@ -17,8 +17,8 @@ import java.util.Iterator;
  */
 public class ConvertImageFile {
     public static void main(String[] args) throws IOException {
-        FileImageInputStream fiis=new FileImageInputStream(new File("F:/test1.jpg"));
-        FileImageOutputStream fios=new FileImageOutputStream(new File("F:/test1.bmp"));
+        FileImageInputStream fiis=new FileImageInputStream(new File("F:/1.jpg"));
+        FileImageOutputStream fios=new FileImageOutputStream(new File("F:/1.bmp"));
 
         ImageReader jpegReader = null;
         Iterator<ImageReader> it1 = ImageIO.getImageReadersByFormatName("jpg");
