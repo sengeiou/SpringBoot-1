@@ -1,13 +1,16 @@
 package com.onejane.image.mergetable;
 
+import com.onejane.image.ImageUtils;
+
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class TestMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		String[][] dataArray = new String[][]{
 				{ "物资标牌","物资标牌","物资标牌","物资标牌","物资标牌","物资标牌","物资标牌","物资标牌","物资标牌","物资标牌","物资标牌","物资标牌","物资标牌","物资标牌","物资标牌","物资标牌"},
@@ -31,7 +34,11 @@ public class TestMain {
 		}
 
 		//生成图片
-		File file = new File("F:/1.jpg");
+//		File file = new File("F:/1.jpg");
+		//生成图片
+		// 存放上传图片的文件夹
+		File fileDir = ImageUtils.getImgDirFile();
+		File file = new File(fileDir.getAbsolutePath() + File.separator + "1.jpg");
 		File file2 = new File("F:/1.jpg");
 		try {
 
@@ -62,6 +69,7 @@ public class TestMain {
 			e.printStackTrace();
 		}
 
+		ImageUtils.convertImageFile(file);
 
 	}
 }

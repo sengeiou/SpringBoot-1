@@ -111,17 +111,31 @@ mongodb:
     uri: mongodb://127.0.0.1:27017
 
 
+#com:
+#  mqtt:
+#    host: tcp://144.34.177.162:1883
+#    clientid: onejane
+#    username: test1
+#    password: test123
+#    subscribeTopic: /sys/GW99000001/send
+#    publishTopic: /sys/AE99000001/receive
+#    timeout: 10
+#    keepalive: 90
+#    maxInflight: 1000000
+
 com:
   mqtt:
     host: tcp://192.168.2.6:1883
     clientid: onejane
     username: admin
     password: public
-    subscribeTopic: aaa
-    publishTopic: aaa
+    subscribeTopic: /sys/GW99000001/send
+    publishTopic: /sys/GW99000001/send
     timeout: 10
     keepalive: 90
     maxInflight: 1000000
+    filePath: F:/code
+    fileurl: http://127.0.0.1:88/
 
 server:
   port: 10000
