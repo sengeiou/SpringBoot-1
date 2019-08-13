@@ -4,6 +4,18 @@ spring:
     active: dev
   application: 
     name: springboot
+  http:
+    servlet:
+      multipart:
+        max-file-size: 50Mb
+        max-request-size: 100Mb
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
   mail:
     host: smtp.qq.com
     port: 587
@@ -82,7 +94,6 @@ spring:
 
   main:
     allow-bean-definition-overriding: true
-
   redis:
     host: 127.0.0.1
     database: 1
@@ -110,7 +121,18 @@ mongodb:
     database: secondary
     uri: mongodb://127.0.0.1:27017
 
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
 
+aliyun:
+  oss:
+    endPoint: oss-cn-beijing.aliyuncs.com
+    accessKeyId: LTAITuSh49mMQCi2
+    accessKeySecret: TVac6ND2MmfmVi2hB7nYvpPtzMTUnK
+    bucketName: codewj
+    ossUrl: http://codewj.oss-cn-beijing.aliyuncs.com
 #com:
 #  mqtt:
 #    host: tcp://144.34.177.162:1883
@@ -145,8 +167,6 @@ jwt:
     key: codewj
     ttl: 3600000
 
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
 
 # 配置的补充与优先级 在dev中没有配置age,所以会采用主配置的，在prod中配置dev,会按照精确优先，使用dev中的配置
 #home 目录下的 devtools 全局设置属性（~/.spring-boot-devtools.properties，如果 devtools 激活）。
