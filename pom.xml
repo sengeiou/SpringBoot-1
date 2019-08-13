@@ -85,6 +85,20 @@
 			<version>1.1</version>
 		</dependency>
 
+		<!-- aspose -->
+		<dependency>
+			<groupId>com.aspose.words</groupId>
+			<artifactId>aspose-words</artifactId>
+			<version>19.2</version>
+		</dependency>
+
+		<!--pdf -->
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>1.8.16</version>
+		</dependency>
+
 		<!-- jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
